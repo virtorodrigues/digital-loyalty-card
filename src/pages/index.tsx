@@ -18,7 +18,7 @@ export default function Home() {
         <Flex
           as="form"
           width={"100%"}
-          maxWidth={360}
+          maxWidth={415}
           bg="gray.500"
           p="8"
           borderRadius={8}
