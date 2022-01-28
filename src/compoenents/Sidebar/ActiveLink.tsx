@@ -11,19 +11,14 @@ export function ActiveLink({ children, shouldMathExactHref = false, ...rest }: A
   const { asPath } = useRouter();
   let isActive = false;
 
-  if (shouldMathExactHref && (asPath === rest.href || asPath === rest.as)) {
+  if ((asPath === rest.href || asPath === rest.as)) {
     isActive = true;
   }
 
-  if (!shouldMathExactHref &&
-    (asPath.startsWith(String(rest.href)) ||
-      asPath.startsWith(String(rest.as)))) {
-    isActive = true;
-  }
   return (
     <Link {...rest}>
       {cloneElement(children, {
-        color: isActive ? 'pink.400' : 'gray.50'
+        color: isActive ? 'red.400' : 'gray.50'
       })}
     </Link>
   )

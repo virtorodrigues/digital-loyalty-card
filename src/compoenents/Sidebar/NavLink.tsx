@@ -11,7 +11,7 @@ type NavLinkProps = {
 export function NavLink({ icon, href, children, ...rest }: NavLinkProps) {
   return (
     <ActiveLink href={href} passHref>
-      <Link display="flex" p="1" alignItems="center" {...rest}>
+      <Link display="flex" alignItems="center" {...rest}>
         <Icon as={icon} fontSize="20" display="flex" />
         <Text ml="4" fontWeight="medium">{children}</Text>
       </Link >
