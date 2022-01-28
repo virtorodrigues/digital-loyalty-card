@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Input, Stack, Text } from "@chakra-ui/react";
+import { AppInput } from "../compoenents/Form/Input";
 
 export default function Home() {
   return (
@@ -35,12 +36,12 @@ export default function Home() {
               Faça seu login
             </Text>
 
-            <Input
+            <AppInput
               name="email"
               label="E-mail"
               type="email"
             />
-            <Input
+            <AppInput
               name="password"
               label="Password"
               type="password"

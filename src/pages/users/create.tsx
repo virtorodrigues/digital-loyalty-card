@@ -1,14 +1,11 @@
-import { Box, Button, Divider, Flex, Heading, HStack, Input, SimpleGrid, VStack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Heading, HStack, SimpleGrid, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import TemplateLogged from "../../compoenents/TemplateLogged";
+import { AppInput } from "../../compoenents/Form/Input";
 
 export default function CreateUser() {
-
   return (
-
     <TemplateLogged>
-
-
       <Box
         as="form"
         flex="1"
@@ -22,13 +19,13 @@ export default function CreateUser() {
 
         <VStack spacing={["6", "8"]}>
           <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
-            <Input
+            <AppInput
               // {...register("name")}
               // error={errors.name}
               name="name"
               label="Nome completo"
             />
-            <Input
+            <AppInput
               //  {...register("email")}
               //   error={errors.email}
               name="email"
@@ -37,14 +34,14 @@ export default function CreateUser() {
             />
           </SimpleGrid>
           <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
-            <Input
+            <AppInput
               // {...register("password")}
               // error={errors.password}
               name="password"
               type="password"
               label="Senha"
             />
-            <Input
+            <AppInput
               //  {...register("password_confirmation")}
               // error={errors.password_confirmation}
               name="password_confirmation"
