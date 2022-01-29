@@ -17,10 +17,10 @@ export default function PaginationItem({
         size="sm"
         fontSize="xs"
         width="4"
-        colorScheme="pink"
+        colorScheme="red"
         disabled
         _disabled={{
-          bg: "pink.500",
+          bg: "red.500",
           cursor: "default",
         }}
       >
