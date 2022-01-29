@@ -1,10 +1,37 @@
-import { Box, Button, Flex, Heading, Icon } from "@chakra-ui/react";
-import Link from "next/link";
-import { RiAddLine } from "react-icons/ri";
 import TemplateLogged from "../../compoenents/TemplateLogged";
 
 
+import {
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Heading,
+  Icon,
+  Link as ChakraLink,
+  Spinner,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import Link from "next/link";
+import { useState } from "react";
+import { RiAddLine, RiPencilLine } from "react-icons/ri";
+import { Pagination } from "../../compoenents/Pagination";
+
 export default function Users() {
+  const [page, setPage] = useState(10);
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  });
+
+  const [data, setData] = useState({ users: [] })
 
   return (
     <TemplateLogged>
@@ -38,22 +65,6 @@ export default function Users() {
           </Link>
         </Flex>
 
-
-      </Box >
-    </TemplateLogged>
-  )
-}
-
-/* {/*
-      {isLoading ? (
-        <Flex justify="center">
-          <Spinner />
-        </Flex>
-      ) : error ? (
-        <Flex justify="center">
-          <Text>Falha ao obter dados dos usuários!</Text>
-        </Flex>
-      ) : (
         <>
           <Table colorScheme="whiteAlpha">
             <Thead>
@@ -74,7 +85,7 @@ export default function Users() {
                   </Td>
                   <Td>
                     <Box>
-                      <ChakraLink color="purple.300" onMouseEnter={() => handlePrefetchUser(user.id)}>
+                      <ChakraLink color="purple.300" onMouseEnter={() => console.log('mouse enter')/* handlePrefetchUser(user.id) */}>
                         <Text fontWeight="bold">{user.name}</Text>
                       </ChakraLink>
                       <Text fontSize="sm" color="gray.300">{user.email}</Text>
@@ -106,9 +117,13 @@ export default function Users() {
           </Table >
 
           <Pagination
-            totalCountOfRegisters={data.totalCount}
+            totalCountOfRegisters={200}
             currentPage={page}
             onPageChange={setPage}
           />
-                  </>
-      )}*/
+        </>
+
+      </Box >
+    </TemplateLogged>
+  )
+}
