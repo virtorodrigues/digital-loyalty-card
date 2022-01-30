@@ -34,7 +34,6 @@ export function Pagination({
     ? generatePagesArray(currentPage, Math.min(currentPage + siblingsCount, lastPage))
     : [];
 
-
   return (
     <Stack
       direction={["column", "row"]}
@@ -44,7 +43,7 @@ export function Pagination({
       align="center"
     >
       <Box>
-        <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
+        <strong>0</strong> - <strong>{registerPerPage}</strong> de <strong>{totalCountOfRegisters}</strong>
       </Box>
       <Stack direction="row" spacing="2">
 

@@ -2,8 +2,31 @@ import { Box, Button, Divider, Flex, Heading, HStack, SimpleGrid, VStack } from 
 import Link from "next/link";
 import TemplateLogged from "../../compoenents/TemplateLogged";
 import { AppInput } from "../../compoenents/Form/Input";
+import { FormEvent, useState } from "react";
+import { api } from "../../services/api";
 
 export default function CreateUser() {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmationPassword, setConfirmationPassword] = useState('');
+
+  const handleCreateUser = async (event: FormEvent) => {
+    event.preventDefault();
+
+    const user = {
+      name,
+      email,
+      password,
+      confirmationPassword,
+    };
+
+    const response = await api.post('/user', user);
+
+    console.log(response);
+  }
+
   return (
     <TemplateLogged>
       <Box
@@ -12,7 +35,7 @@ export default function CreateUser() {
         borderRadius={8}
         bg="gray.800"
         p={["6", "8"]}
-      // onSubmit={handleSubmit(handleCreateUser)}
+        onSubmit={handleCreateUser}
       >
         <Heading size="lg" fontWeight="normal">Criar usuário</Heading>
         <Divider my="6" borderColor="gray.700" />
@@ -24,6 +47,8 @@ export default function CreateUser() {
               // error={errors.name}
               name="name"
               label="Nome completo"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <AppInput
               //  {...register("email")}
@@ -31,6 +56,8 @@ export default function CreateUser() {
               name="email"
               label="E-mail"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </SimpleGrid>
           <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
@@ -40,6 +67,8 @@ export default function CreateUser() {
               name="password"
               type="password"
               label="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <AppInput
               //  {...register("password_confirmation")}
@@ -47,6 +76,8 @@ export default function CreateUser() {
               name="password_confirmation"
               label="Confirmação da senha"
               type="password"
+              value={confirmationPassword}
+              onChange={(e) => setConfirmationPassword(e.target.value)}
             />
           </SimpleGrid>
         </VStack>
