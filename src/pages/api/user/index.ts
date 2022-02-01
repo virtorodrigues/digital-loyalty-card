@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const user = {
         fullName: "easdasds",
-        email: "santos_vitao@sdfsdfsdfzdsdsdssl.com",
+        email: "asdasd@sdfsdfsdfzdsdsdssl.com",
         sex: "males", //males|females
         cpf: "443.759.438-07",
         cel: "(18)99718-3307",
@@ -42,53 +42,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
       } as UserProps;
 
-      const userErrors = [];//await handleErrorApiCreateUser(user);
+      const userErrors = await handleErrorApiCreateUser(user);
 
-
-      /*      let userAlreadyExists = null;
-            try {
-              //already user exists
-              userAlreadyExists = await faunadbClient.query(
-                q.Get(
-                  q.Match(
-                    q.Index('user_by_email'),
-                    q.Casefold('santos_vitao@sdfsdfsdfzdsdsdssl.com')
-                  )
-                )
-              );
-      
-              console.log(userAlreadyExists);
-      
-              if (userAlreadyExists) {
-                userErrors.push({ code: 18, message: 'user already exists.' });
-              }
-              //  console.log(userAlreadyExists);
-              
-              
-            } catch (err) {
-              console.log(err);
-            }
-            */
-
-      const asdasd = await fauna.query(
-        q.Index('user_by_email', q.Database('users'))
-
-      );
-
-
-      console.log(asdasd);
-
+      console.log(userErrors);
 
       if (userErrors.length === 0) {
-        /*  await fauna.query(
-            q.Create(
-              q.Collection('users'),
-              {
-                data: user
-              }
-            )
-          );
-  */
+        await fauna.query(
+          q.Create(
+            q.Collection('users'),
+            {
+              data: user
+            }
+          )
+        );
+
         return res.json({
           success: true,
           user,

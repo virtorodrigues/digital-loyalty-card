@@ -70,7 +70,23 @@ export async function handleErrorApiCreateUser(user: UserProps) {
     userErrors.push({ code: 17, message: 'user address is required.' });
   }
 
+  try {
+    //already user exists
+    const userAlreadyExists = await fauna.query(
+      q.Get(
+        q.Match(
+          q.Index('user_by_email'),
+          user.email
+        ),
+      )
+    );
 
+    if (userAlreadyExists) {
+      userErrors.push({ code: 18, message: 'user already exists.' });
+    }
+  } catch (err) {
+    console.log(err);
+  }
 
 
   return userErrors;
