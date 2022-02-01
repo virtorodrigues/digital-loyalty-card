@@ -24,7 +24,7 @@ export default function CreateUser() {
 
     const response = await api.post('/user', user);
 
-    console.log(response);
+    console.log(response.data);
   }
 
   return (
